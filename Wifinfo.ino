@@ -95,6 +95,7 @@ volatile boolean task_emoncms = false;
 volatile boolean task_jeedom = false;
 volatile boolean task_httpRequest = false;
 volatile boolean task_updsw = false;
+volatile boolean task_updadps = false;
 unsigned long seconds = 0;
 
 // sysinfo data
@@ -321,7 +322,9 @@ void ADPSCallback(uint8_t phase)
   // Monophasé
   if (phase == 0 ) {
     Debugln(F("ADPS"));
+    task_updadps= true;
   } else {
+    task_updadps= false;
     Debug(F("ADPS Phase "));
     Debugln('0' + phase);
   }
@@ -863,7 +866,7 @@ void setup()
   // Note that TXD2 is not used teleinfo is receive only
   #ifdef DEBUG_SERIAL1
     Serial.begin(1200, SERIAL_7E1);
-    Serial.swap();
+  //  Serial.swap();
   #endif
 
   // Init teleinfo
@@ -964,11 +967,15 @@ void loop()
     jeedomPost();  
     task_jeedom=false;
   } else if (task_httpRequest) { 
-    httpRequest();  
+    httpRequest();
+    UPD_I();  
     task_httpRequest=false;
   } else if (task_updsw) { 
     UPD_switch();  
     task_updsw=false;
+  } else if (task_updadps) { 
+    UPD_ADPS();  
+    task_updadps=false;
   }
   
   

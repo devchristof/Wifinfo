@@ -219,6 +219,19 @@ void handleFormConfig(void)
     else
       config.httpReq.swidx = 0;
 
+    
+    itemp = server.arg("httpreq_iidx").toInt();
+    if (itemp > 0 && itemp <= 65535)
+      config.httpReq.iidx = itemp;
+    else
+      config.httpReq.iidx = 0;
+    
+    itemp = server.arg("httpreq_adpsidx").toInt();
+    if (itemp > 0 && itemp <= 65535)
+      config.httpReq.adpsidx = itemp;
+    else
+      config.httpReq.adpsidx = 0;
+
     if ( saveConfig() ) {
       ret = 200;
       response = "OK";

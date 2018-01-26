@@ -209,6 +209,8 @@ void showConfig()
   DebugF("port     :"); Debugln(config.httpReq.port); 
   DebugF("path     :"); Debugln(config.httpReq.path); 
   DebugF("freq     :"); Debugln(config.httpReq.freq); 
-  DebugF("sw idx   :"); Debugln(config.httpReq.swidx); 
+  DebugF("sw idx   :"); Debugln(config.httpReq.swidx);
+  DebugF("I idx   :"); Debugln(config.httpReq.iidx);    //Intensité
+  DebugF("sw idx   :"); Debugln(config.httpReq.adpsidx);//ADPS 
 }
 

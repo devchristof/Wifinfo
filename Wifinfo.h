@@ -46,7 +46,7 @@ extern "C" {
 #include "config.h"
 
 // Declare SIMU to work and test a non connected module
-#define SIMU
+//#define SIMU
 
 #define DEBUG
 

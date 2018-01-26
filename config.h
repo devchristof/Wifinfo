@@ -90,7 +90,8 @@
 #define CFG_FORM_HTTPREQ_PATH  FPSTR("httpreq_path")
 #define CFG_FORM_HTTPREQ_FREQ  FPSTR("httpreq_freq")
 #define CFG_FORM_HTTPREQ_SWIDX FPSTR("httpreq_swidx")
-
+#define CFG_FORM_HTTPREQ_IIDX FPSTR("httpreq_iidx")
+#define CFG_FORM_HTTPREQ_ADPSIDX FPSTR("httpreq_adps")
 #define CFG_FORM_IP  FPSTR("wifi_ip");
 #define CFG_FORM_GW  FPSTR("wifi_gw");
 #define CFG_FORM_MSK FPSTR("wifi_msk");
@@ -133,6 +134,8 @@ typedef struct
   uint16_t port;                        // Protocol port (HTTP/HTTPS) 
   uint32_t freq;                        // refresh rate
   uint16_t swidx;                       // Switch index (into Domoticz)
+  uint16_t iidx;                        // Intensité
+  uint16_t adpsidx;                     // ADPS
   uint8_t filler[22];                   // in case adding data in config avoiding loosing current conf by bad crc*/
 } _httpRequest;
 
